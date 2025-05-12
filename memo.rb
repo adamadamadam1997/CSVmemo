@@ -9,7 +9,7 @@ loop do
     memo_name = gets.chomp
     CSV.open("#{memo_name}.csv","w") do |csv|
       puts "メモしたい内容を入力"
-      memo_text = gets.chomp
+      memo_text = $stdin.readlines
       csv << [memo_text]
       puts "メモが作成されました"
       puts "#{memo_name} : #{memo_text}"
@@ -23,7 +23,7 @@ loop do
       puts "#{File.read("#{memo_name}.csv")}"
       CSV.open("#{memo_name}.csv", "a") do |csv|
         puts "追加したい内容を入力"
-        memo_text = gets.chomp
+        memo_text = $stdin.readlines
         csv << [memo_text]
         puts "メモが追加されました"
       end
